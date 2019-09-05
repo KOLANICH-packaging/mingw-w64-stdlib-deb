@@ -1,0 +1,30 @@
+From: KOLANICH <kolan_n@mail.ru>
+Date: Thu, 11 Apr 2019 20:06:23 +0300
+Subject: Fixed the bug with conflict between C and C++ definitions of byte.
+
+---
+ $ARCH-w64-mingw32/include/rpcndr.h                     | 6 ++++++
+ 1 files changed, 6 insertions(+), 6 deletion(-)
+
+
+diff --git a/$ARCH-w64-mingw32/include/rpcndr.h b/$ARCH-w64-mingw32/include/rpcndr.h
+index 52de4ad..a490aa4 100644
+--- a/$ARCH-w64-mingw32/include/rpcndr.h
++++ b/$ARCH-w64-mingw32/include/rpcndr.h
+@@ -60,7 +60,13 @@ extern "C" {
+ #ifdef RC_INVOKED
+ #define small char
+ #endif
++
++#ifndef _BYTE_DEFINED_AdTydTeKkpRvvDuzZisXJMGxPRSHkr
+   typedef unsigned char byte;
++  #define _BYTE_DEFINED_AdTydTeKkpRvvDuzZisXJMGxPRSHkr
++#else:
++  typedef std::byte byte;
++#endif
+   typedef byte cs_byte;
+   typedef unsigned char boolean;
+ 
+-- 
+2.20.1
+
